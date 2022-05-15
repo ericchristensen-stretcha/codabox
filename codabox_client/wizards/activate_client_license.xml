@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="codabox_activate_client_license_view">
+        <field name="name">Activate Client License</field>
+        <field name="model">codabox.activate_client_license</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Activate Client License">
+                <group>
+                    <field name="name" required="1"/>
+                    <field name="license_info" required="1"/>
+                </group>
+                <footer>
+                    <button name="do_action" string="Activate" type="object" class="btn-primary"/>
+                    <button special="cancel" string="No"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window
+        id="action_codabox_activate_client_license"
+        name="Activate Client License"
+        res_model="codabox.activate_client_license"
+        view_mode="form"
+        target="new"
+        view_type="form"
+        context="{}"
+    />
+
+  </data>
+</odoo>

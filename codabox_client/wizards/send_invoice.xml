@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <data>
+
+    <record model="ir.ui.view" id="codabox_upload_invoice_view">
+        <field name="name">Upload UBL to Codabox</field>
+        <field name="model">codabox.upload_invoice</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Upload UBL to Codabox">
+                <field name="active_domain" invisible="1"/>
+                <group>
+                    <field name="name" required="1"/>
+                    <field name="ubl_file"
+                           required="1"
+                           domain="[('id','in', active_domain[0][2])]"
+                           options="{'no_create':true}"
+                    />
+                </group>
+                <footer>
+                    <button name="do_action" string="Upload" type="object" class="btn-primary"/>
+                    <button special="cancel" string="No"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window
+        id="action_codabox_upload_invoice"
+        name="Upload UBL to Codabox"
+        res_model="codabox.upload_invoice"
+        src_model="account.invoice"
+        view_mode="form"
+        target="new"
+        view_type="form"
+        context="{}"
+    />
+
+  </data>
+</odoo>
